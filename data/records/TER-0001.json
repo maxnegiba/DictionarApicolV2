@@ -1,0 +1,26 @@
+{
+  "id": "TER-0001",
+  "kind": "TER",
+  "status": "DRAFT",
+  "risk": "P2",
+  "modules": [
+    "M02"
+  ],
+  "claims": [],
+  "editions": {
+    "ro": {
+      "status": "DRAFT",
+      "title": "Exemplu de structură (nevalidat)",
+      "body": "CONȚINUT DEMONSTRATIV — NU ESTE O DEFINIȚIE.",
+      "jurisdiction": "RO/EU",
+      "terminology_reviewed": false
+    },
+    "en": {
+      "status": "DRAFT",
+      "title": "Structure example (unverified)",
+      "body": "DEMONSTRATION CONTENT — NOT A DEFINITION.",
+      "jurisdiction": "International",
+      "terminology_reviewed": false
+    }
+  }
+}
