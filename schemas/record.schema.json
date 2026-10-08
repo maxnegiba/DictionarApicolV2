@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bilingual editorial record",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "status",
+    "risk",
+    "modules",
+    "claims",
+    "editions"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(TER|CON|SOP|TAX|PAT|REG|DAT|IMG)-[0-9]{4,6}$"
+    },
+    "kind": {
+      "enum": [
+        "TER",
+        "CON",
+        "SOP",
+        "TAX",
+        "PAT",
+        "REG",
+        "DAT",
+        "IMG"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "RESEARCHED",
+        "FACT_CHECKED",
+        "LANGUAGE_REVIEWED",
+        "APPROVED",
+        "BLOCKED",
+        "REJECTED"
+      ]
+    },
+    "risk": {
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ]
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^M(0[1-9]|1[0-2])$"
+      },
+      "minItems": 1
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "source_ids",
+          "verification"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verification": {
+            "enum": [
+              "UNVERIFIED",
+              "SUPPORTED",
+              "DISPUTED"
+            ]
+          }
+        }
+      }
+    },
+    "editions": {
+      "type": "object",
+      "required": [
+        "ro",
+        "en"
+      ],
+      "properties": {
+        "ro": {
+          "$ref": "#/$defs/edition"
+        },
+        "en": {
+          "$ref": "#/$defs/edition"
+        }
+      },
+      "additionalProperties": false
+    },
+    "external_review": {
+      "type": "object",
+      "properties": {
+        "reviewer_role": {
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "APPROVED",
+            "REJECTED"
+          ]
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "edition": {
+      "type": "object",
+      "required": [
+        "status",
+        "title",
+        "body"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "DRAFT",
+            "RESEARCHED",
+            "FACT_CHECKED",
+            "LANGUAGE_REVIEWED",
+            "APPROVED",
+            "BLOCKED"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "jurisdiction": {
+          "type": "string"
+        },
+        "terminology_reviewed": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

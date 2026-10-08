@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+build/
+exports/
+private/
+intake/
+manuscript/
+audit/
+*.docx
+*.pdf
+*.xlsx
+*.csv
